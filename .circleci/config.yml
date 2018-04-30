@@ -21,4 +21,10 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip -r requirements/dev.txt
+       
+      - store_artifacts:
+          path: test-reports/
+          destination: tr1
+      - store_test_results:
+          path: test-reports/
             
