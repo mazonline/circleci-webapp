@@ -24,7 +24,7 @@ jobs:
       - run:
           command: |
             . venv/bin/activate
-            python button_click_test.py
+            python tests/button_click_test.py
        
       - store_artifacts:
           path: test-reports/
