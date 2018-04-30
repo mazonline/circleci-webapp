@@ -2,8 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node-browsers
-    steps:
+      - image: circleci/node:latest
       - checkout
       - run: mkdir test-reports
       - run:
