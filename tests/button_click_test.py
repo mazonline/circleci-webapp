@@ -17,8 +17,7 @@ class PythonOrgSearch(unittest.TestCase):
         driver.implicitly_wait(20) 
         element = driver.find_element_by_xpath("/html/body/button")
         element.click()
-        echo 'You have been clicked' 
-    def tearDown(self):
+   def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
