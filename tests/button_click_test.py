@@ -15,7 +15,7 @@ class NewTest(unittest.TestCase):
         # we find in our tests
 
         self.selenium = selenium("localhost", 4444, "*firefox",
-                "http://www.google.com/")
+                "https://mazonline.github.io/index.html/")
         self.selenium.start()
         # We instantiate and start the browser
 
@@ -28,7 +28,7 @@ class NewTest(unittest.TestCase):
         # typing "self.selenium" each time we want to call the browser).
 
         sel.open("/")
-        sel.type("q", "selenium rc")
+        #sel.type("q", "selenium rc")
         sel.click("btnG")
         sel.wait_for_page_to_load("30000")
         self.failUnless(sel.is_text_present("Results * for selenium rc"))
