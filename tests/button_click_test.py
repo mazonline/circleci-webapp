@@ -15,7 +15,7 @@ class PythonOrgSearch(unittest.TestCase):
     def test_search_in_python_org(self):
         driver.get("https://mazonline.github.com/index.html")
         driver.implicitly_wait(20) 
-        element = driver.find_element_by_xpath("//*[@id="demo"]/html/body/button")
+        element = driver.find_element_by_xpath("/html/body/button")
         element.click()
         echo 'You have been clicked' 
     def tearDown(self):
