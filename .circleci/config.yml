@@ -15,6 +15,6 @@ jobs:
           background: true
      - run:
           name: install selenium web driver
-          command: python3-pip install selenium
+          command: python3 -m venv venv
           
      
