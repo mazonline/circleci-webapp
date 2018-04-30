@@ -3,11 +3,14 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.firefox.options import Options
+
 
 
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
+        options = Options()
         options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_options=options)
 
