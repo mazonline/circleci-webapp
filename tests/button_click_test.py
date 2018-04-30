@@ -1,5 +1,4 @@
-#!/usr/bin/python 
-
+#!/usr/bin/python
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -14,10 +13,11 @@ class PythonOrgSearch(unittest.TestCase):
 
     def test_search_in_python_org(self):
         driver.get("https://mazonline.github.com/index.html")
-        driver.implicitly_wait(20) 
+        driver.implicitly_wait(20)
         element = driver.find_element_by_xpath("/html/body/button")
         element.click()
-   def tearDown(self):
+
+    def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
