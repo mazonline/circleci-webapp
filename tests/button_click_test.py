@@ -17,7 +17,7 @@ class PythonOrgSearch(unittest.TestCase):
     def test_search_in_python_org(self):
         driver.get("https://mazonline.github.com/index.html")
         driver.implicitly_wait(20)
-        element = driver.driver.find_element_by_xpath("//span[contains(text(), Button)]")
+        element = driver.driver.find_element_by_css_selector('html.body.button')
         element.click()
 
     def tearDown(self):
