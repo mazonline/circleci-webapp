@@ -1,27 +1,44 @@
-#!/usr/bin/python
-import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from selenium.webdriver.firefox.options import Options
+# This is the driver's import.  You'll use this class for instantiating a
+# browser and making it do what you need.
 
+import unittest, time, re
+# This are the basic imports added by Selenium-IDE by default.
+# You can remove the modules if they are not used in your script.
 
-
-class PythonOrgSearch(unittest.TestCase):
+class NewTest(unittest.TestCase):
+# We create our unittest test case
 
     def setUp(self):
-        options = Options()
-        options.add_argument("--headless")
-        self.driver = webdriver.Firefox(firefox_options=options)
+        self.verificationErrors = []
+        # This is an empty array where we will store any verification errors
+        # we find in our tests
 
-    def test_search_in_python_org(self):
-        driver.get("https://mazonline.github.com/index.html")
-        driver.implicitly_wait(20)
-        element = driver.driver.find_element_by_xPath("//*[@id="demo"]")
-        element.click()
+        self.selenium = selenium("localhost", 4444, "*firefox",
+                "http://www.google.com/")
+        self.selenium.start()
+        # We instantiate and start the browser
+
+    def test_new(self):
+        # This is the test code.  Here you should put the actions you need
+        # the browser to do during your test.
+
+        sel = self.selenium
+        # We assign the browser to the variable "sel" (just to save us from
+        # typing "self.selenium" each time we want to call the browser).
+
+        sel.open("/")
+        sel.type("q", "selenium rc")
+        sel.click("btnG")
+        sel.wait_for_page_to_load("30000")
+        self.failUnless(sel.is_text_present("Results * for selenium rc"))
+        # These are the real test steps
 
     def tearDown(self):
-        self.driver.close()
+        self.selenium.stop()
+        # we close the browser (I'd recommend you to comment this line while
+        # you are creating and debugging your tests)
 
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual([], self.verificationErrors)
+        # And make the test fail if we found that any verification errors
+        # were found
