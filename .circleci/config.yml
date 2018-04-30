@@ -13,8 +13,5 @@ jobs:
           name: Start Selenium
           command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
           background: true
-      -run:
-          name: Install selenium python webdriver
-          command: python3-pip install selenium 
-          ecommand: echo 'selenium web driver installed'
+      
              
