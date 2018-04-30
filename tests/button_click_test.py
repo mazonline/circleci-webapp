@@ -9,20 +9,15 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        options = Options()
         options.add_argument("--headless")
         self.driver = webdriver.Firefox(firefox_options=options)
 
     def test_search_in_python_org(self):
-        driver = self.driver
-        driver.get("http://www.python.org")
-        self.assertIn("Python", driver.title)
-        elem = driver.find_element_by_name("q")
-        elem.send_keys("pycon")
-        elem.send_keys(Keys.RETURN)
-        assert "No results found." not in driver.page_source
-
-
+        driver.get("https://mazonline.github.com/index.html")
+        driver.implicitly_wait(20) 
+        element = driver.find_element_by_xpath("//*[@id="demo"]/html/body/button")
+        element.click()
+        echo 'You have been clicked' 
     def tearDown(self):
         self.driver.close()
 
