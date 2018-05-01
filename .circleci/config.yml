@@ -30,7 +30,7 @@ jobs:
           name: Test button click results
           command: |
             . venv/bin/activate
-            python tests/button_click_test.py
+            python tests/test_button_click.py
        
       - store_artifacts:
           path: test-reports/
