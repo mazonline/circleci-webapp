@@ -5,7 +5,9 @@ jobs:
       - image: circleci/python:3.6.2-stretch-browsers
     steps:
       - checkout
-      - run: mkdir test-reports
+      - run: 
+           name: Create test reports directory
+           command: mkdir test-reports
       - run:
           name: Download Selenium
           command: |
@@ -16,7 +18,7 @@ jobs:
             java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
           background: true
       - run: 
-          name: install geckodriver
+          name: Install geckodriver
           command: bash browser-drivers.sh
       - run:
           name: Install Python deps in a venv
@@ -25,7 +27,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip -r requirements/dev.txt
       - run:
-          name: Test button click resukts
+          name: Test button click results
           command: |
             . venv/bin/activate
             python tests/button_click_test.py
