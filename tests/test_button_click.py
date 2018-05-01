@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import unittest, time, re
 
 class NewTest(unittest.TestCase):
