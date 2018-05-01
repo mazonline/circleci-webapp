@@ -1,10 +1,5 @@
 from selenium import webdriver
-# This is the driver's import.  You'll use this class for instantiating a
-# browser and making it do what you need.
-
 import unittest, time, re
-# This are the basic imports added by Selenium-IDE by default.
-# You can remove the modules if they are not used in your script.
 
 class NewTest(unittest.TestCase):
 # We create our unittest test case
@@ -30,7 +25,7 @@ class NewTest(unittest.TestCase):
         sel.open("/")
         #sel.type("q", "selenium rc")
         element = sel.click("btnG")
-        print element
+        print element()
         sel.wait_for_page_to_load("30000")
         self.failUnless(sel.is_text_present("Results * for selenium rc"))
         # These are the real test steps
