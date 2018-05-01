@@ -25,7 +25,9 @@ class NewTest(unittest.TestCase):
 
         sel.open("/")
         #sel.type("q", "selenium rc")
-        element = sel.click("btnG")
+        #element = sel.click("btnG")
+        button = driver.find_element_by_name('answer')
+        button.click()
         print ('Button is clicked and contains text!')
         sel.wait_for_page_to_load("30000")
         self.failUnless(sel.is_text_present("Results * for selenium rc"))
