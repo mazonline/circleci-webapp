@@ -30,7 +30,7 @@ class NewTest(unittest.TestCase):
         #self.failUnless(sel.is_text_present("Results * for selenium rc"))
         # These are the real test steps
     
- test_new(self):
+    test_new(self):
         sel.open("/")
         #test button click of mazonline.github.io/index.html
         element = driver.find_element_by_xpath("//button[@type='myFunction']").click()
