@@ -47,5 +47,3 @@ class NewTest(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
         # And make the test fail if we found that any verification errors
         # were found
-if __name__ == "__main__":
-    unittest.main()
