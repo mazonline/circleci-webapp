@@ -1,49 +1,44 @@
+import unittest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-import unittest, time, re
 
-class NewTest(unittest.TestCase):
-# We create our unittest test case
+class SearchText(unittest.TestCase):
+    @classmethod
+    def setUpClass(inst):
+        # create a new Firefox session
+        inst.driver = webdriver.Firefox()
+        inst.driver.implicitly_wait(30)
+        inst.driver.maximize_window()
+        # navigate to the application home page
+        inst.driver.get("http://www.google.com/")
+        inst.driver.title
 
-    def setUp(self):
-        self.verificationErrors = []
-        # This is an empty array where we will store any verification errors
-        # we find in our tests
+    def test_search_by_text(self):
+        # get the search textbox
+        self.search_field = self.driver.find_element_by_name("q")
+        self.search_field.clear()
+        # enter search keyword and submit
+        self.search_field.send_keys("Selenium Webdriver interview questions")
+        self.search_field.submit()
+        #get the list of elements which are displayed after the search
+        #currently on result page using find_elements_by_class_name method
+        lists = self.driver.find_elements_by_class_name("r")
+        self.assertEqual(11, len(lists))
 
-        self.selenium = selenium("localhost", 4444, "*firefox",
-                "https://mazonline.github.io/index.html/")
-        self.selenium.start()
-        # We instantiate and start the browser
+    def test_search_by_name(self):
+        # get the search textbox
+        self.search_field = self.driver.find_element_by_name("q")
+        # enter search keyword and submit
+        self.search_field.send_keys("Python class")
+        self.search_field.submit()
+        #get the list of elements which are displayed after the search
+        #currently on result page using find_elements_by_class_name method
+        list_new = self.driver.find_elements_by_class_name("r")
+        self.assertEqual(11, len(list_new))
 
-    #def test_new(self):
-        # This is the test code.  Here you should put the actions you need
-        # the browser to do during your test.
+    @classmethod
+    def tearDownClass(inst):
+        # close the browser window
+        inst.driver.quit()
 
-        sel = self.selenium
-        # We assign the browser to the variable "sel" (just to save us from
-        # typing "self.selenium" each time we want to call the browser).
-
-        #sel.open("/")
-        #sel.type("q", "selenium rc")
-        #element = sel.click("btnG")
-        #print ('Button is clicked and contains text!')
-        #sel.wait_for_page_to_load("30000")
-        #self.failUnless(sel.is_text_present("Results * for selenium rc"))
-        # These are the real test steps
-    
-    def test_new(self):
-        sel.open("/")
-        #test button click of mazonline.github.io/index.html
-        #element = driver.find_element_by_xpath("//button[@type='myFunction']").click()
-        element = driver.find_element_by_name("answer").click()
-        print ('Button is clicked and contains text!')
-        sel.wait_for_page_to_load("30000")
-        
-    def tearDown(self):
-        self.selenium.stop()
-        # we close the browser (I'd recommend you to comment this line while
-        # you are creating and debugging your tests)
-
-        self.assertEqual([], self.verificationErrors)
-        # And make the test fail if we found that any verification errors
-        # were found
+if __name__ == '__main__':
+    unittest.main()
