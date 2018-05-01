@@ -25,6 +25,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip -r requirements/dev.txt
       - run:
+          name: Test button click resukts
           command: |
             . venv/bin/activate
             python tests/button_click_test.py
