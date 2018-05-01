@@ -1,23 +1,41 @@
-import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import unittest, time, re
 
-class PythonOrgSearch(unittest.TestCase):
+class NewTest(unittest.TestCase):
+# We create our unittest test case
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        self.verificationErrors = []
+        # This is an empty array where we will store any verification errors
+        # we find in our tests
 
-    def test_search_in_python_org(self):
-        driver = self.driver
-        driver.get("http://www.python.org")
-        self.assertIn("Python", driver.title)
-        elem = driver.find_element_by_name("q")
-        elem.send_keys("pycon")
-        elem.send_keys(Keys.RETURN)
-        assert "No results found." not in driver.page_source
+        self.selenium = selenium("localhost", 4444, "*firefox",
+                "https://mazonline.github.io/index.html/")
+        self.selenium.start()
+        # We instantiate and start the browser
+
+    def test_new(self):
+        # This is the test code.  Here you should put the actions you need
+        # the browser to do during your test.
+
+        sel = self.selenium
+        # We assign the browser to the variable "sel" (just to save us from
+        # typing "self.selenium" each time we want to call the browser).
+
+        sel.open("/")
+        #sel.type("q", "selenium rc")
+        element = sel.click("answer")
+        print ('Button is clicked and contains text!')
+        sel.wait_for_page_to_load("30000")
+        self.failUnless(sel.is_text_present("Results * for selenium rc"))
+        # These are the real test steps
 
     def tearDown(self):
-        self.driver.close()
+        self.selenium.stop()
+        # we close the browser (I'd recommend you to comment this line while
+        # you are creating and debugging your tests)
 
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual([], self.verificationErrors)
+        # And make the test fail if we found that any verification errors
+        # were found
