@@ -12,7 +12,7 @@ class PythonOrgSearch(unittest.TestCase):
         driver.get("http://mazonline.github.io/index.html")
         elem = driver.find_element_by_name("answer")
         clicked_button = elem.click()
-        print 'Button has been clicked and there is text'
+        print ('Button has been clicked and there is text')
      
     def tearDown(self):
         self.driver.close()
