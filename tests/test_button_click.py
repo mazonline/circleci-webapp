@@ -22,14 +22,21 @@ class NewTest(unittest.TestCase):
         # We assign the browser to the variable "sel" (just to save us from
         # typing "self.selenium" each time we want to call the browser).
 
-        sel.open("/")
+        #sel.open("/")
         #sel.type("q", "selenium rc")
-        element = sel.click("btnG")
+        #element = sel.click("btnG")
+        #print ('Button is clicked and contains text!')
+        #sel.wait_for_page_to_load("30000")
+        #self.failUnless(sel.is_text_present("Results * for selenium rc"))
+        # These are the real test steps
+    
+    def test_button_click()
+        sel.open("/")
+        #test button click of mazonline.github.io/index.html
+        element = driver.find_element_by_xpath("//button[@type='myFunction']").click()
         print ('Button is clicked and contains text!')
         sel.wait_for_page_to_load("30000")
-        self.failUnless(sel.is_text_present("Results * for selenium rc"))
-        # These are the real test steps
-
+        
     def tearDown(self):
         self.selenium.stop()
         # we close the browser (I'd recommend you to comment this line while
